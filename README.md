@@ -26,7 +26,13 @@ This project is a web application designed to complement the Dublin Bikes rental
 
 **Responsive Design**: Works for both desktop and mobile use.
 
+## Screenshots
+
+### Full View
+
 ![Full App View](screenshots/Full_View.png)
+
+### Zoomed View
 
 ![Zoomed View](screenshots/Zoomed_View.png)
 
