@@ -6,11 +6,15 @@ This project is a web application designed to complement the Dublin Bikes rental
 
 ## Features
 
-**Real-time Data**: Fetches and displays live bike availability from JCDecaux's API.
-
 **Weather Information**: Retrieves and displays real-time weather data using OpenWeather API.
 
+**Real-time Data**: Fetches and displays live bike availability from JCDecaux's API.
+
 **Google Maps Integration**: Stations are displayed with color-coded markers indicating availability.
+
+🟢 Green (Large): High availability.
+🟠 Amber (Medium): Low availability.
+🔴 Red (Small): No available bikes.
 
 **Station Selection**: Users can select a station from a dropdown or by clicking a marker on the map.
 
@@ -20,7 +24,11 @@ This project is a web application designed to complement the Dublin Bikes rental
 
 **Station History Tracking**: Recently viewed stations are stored locally and can be revisited from a dropdown.
 
-**Responsive Design**: Optimized for both desktop and mobile use.
+**Responsive Design**: Works for both desktop and mobile use.
+
+![Full App View](screenshots/Full_View.png)
+
+![Zoomed View](screenshots/Zoomed_View.png)
 
 ## Technologies Used
 
@@ -46,43 +54,11 @@ This project is a web application designed to complement the Dublin Bikes rental
 
 **Data Collection**: Python scripts scrape data from JCDecaux and OpenWeather APIs every 5 minutes.
 
-**Database Storage***: Data is stored in a MySQL database hosted on AWS RDS.
+**Database Storage**: Data is stored in a MySQL database hosted on AWS RDS.
 
 **Backend Processing**: Flask and SQLAlchemy handle API requests and serve data to the frontend.
 
 **Frontend Display**: JavaScript dynamically updates the UI with real-time and predicted availability data.
-
-## Screenshots
-
-### Full Application View
-
-![Full App View](screenshots/Full_View.png)
-
-**Weather Bar**: Displays live weather information above the map.
-
-**Interactive Map**: Circles represent Dublin Bikes stations, with size and color indicating availability:
-
-🟢 Green (Large): High availability.
-🟠 Amber (Medium): Low availability.
-🔴 Red (Small): No available bikes.
-
-**Station Selection**: Click on a station marker on the map or choose a station from the dropdown.
-
-**Predict Future Availability**: Toggle allows users to select a date/time to estimate future availability.
-
-**Show Only Available**: Toggle filters out stations that have no bikes available.
-
-**Viewed Station History**: The bottom bar tracks recently viewed stations.
-
-### Zoomed View
-
-![Zoomed View](screenshots/Zoomed_View.png)
-
-When a user selects a station, the map zooms in to provide more details.
-
-Current Availability: Popup shows number of available bikes and number of available stands.
-
-Predicted Availiblilty: Popup if toggled shows estimated number of bikes and stands for the chosen time.
 
 ## Data Analytics
 
