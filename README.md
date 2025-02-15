@@ -6,51 +6,83 @@ This project is a web application designed to complement the Dublin Bikes rental
 
 ## Features
 
-Real-time Data: Fetches and displays live bike availability from JCDecaux's API.
+**Real-time Data**: Fetches and displays live bike availability from JCDecaux's API.
 
-Weather Information: Retrieves and displays real-time weather data using OpenWeather API.
+**Weather Information**: Retrieves and displays real-time weather data using OpenWeather API.
 
-Interactive Google Maps Integration: Stations are displayed with color-coded markers indicating availability.
+**Google Maps Integration**: Stations are displayed with color-coded markers indicating availability.
 
-Station Selection: Users can select a station from a dropdown or by clicking a marker on the map.
+**Station Selection**: Users can select a station from a dropdown or by clicking a marker on the map.
 
-Availability Filtering: Users can filter to view only stations with available bikes.
+**Availability Filtering**: Users can filter to view only stations with available bikes.
 
-Predictive Model: Users can select a future date and time to view predicted bike availability.
+**Predictive Model**: Users can select a future date and time to view predicted bike availability.
 
-Station History Tracking: Recently viewed stations are stored locally and can be revisited from a dropdown.
+**Station History Tracking**: Recently viewed stations are stored locally and can be revisited from a dropdown.
 
-Responsive Design: Optimized for both desktop and mobile use.
+**Responsive Design**: Optimized for both desktop and mobile use.
 
 ## Technologies Used
 
 ### Frontend
 
-HTML, CSS, JavaScript – for structuring, styling, and interactive UI elements.
+**HTML, CSS, JavaScript** – for structuring, styling, and interactive UI elements.
 
-Google Maps API – for visualizing station locations and bike availability.
+**Google Maps API** – for visualizing station locations and bike availability.
 
 ### Backend
 
-Flask – Python web framework for handling API requests.
+**Flask** – Python web framework for handling API requests.
 
-SQLAlchemy – ORM for database interactions.
+**SQLAlchemy** – ORM for database interactions.
 
-MySQL – database used for storing bike and weather data.
+**MySQL** – database used for storing bike and weather data.
 
-AWS RDS – cloud database for storing real-time data.
+**AWS RDS** – cloud database for storing real-time data.
 
-Python Scrapers – scripts for periodically fetching and storing data from APIs.
+**Python Scrapers** – scripts for periodically fetching and storing data from APIs.
 
 ## Project Architecture
 
-Data Collection: Python scripts scrape data from JCDecaux and OpenWeather APIs every 5 minutes.
+**Data Collection**: Python scripts scrape data from JCDecaux and OpenWeather APIs every 5 minutes.
 
-Database Storage: Data is stored in a MySQL database hosted on AWS RDS.
+**Database Storage***: Data is stored in a MySQL database hosted on AWS RDS.
 
-Backend Processing: Flask and SQLAlchemy handle API requests and serve data to the frontend.
+**Backend Processing**: Flask and SQLAlchemy handle API requests and serve data to the frontend.
 
-Frontend Display: JavaScript dynamically updates the UI with real-time and predicted availability data.
+**Frontend Display**: JavaScript dynamically updates the UI with real-time and predicted availability data.
+
+## Screenshots
+
+### Full Application View
+
+![Full App View](screenshots\Full_View.png)
+
+**Weather Bar**: Displays live weather information above the map.
+
+**Interactive Map**: Circles represent Dublin Bikes stations, with size and color indicating availability:
+
+🟢 Green (Large): High availability.
+🟠 Amber (Medium): Low availability.
+🔴 Red (Small): No available bikes.
+
+**Station Selection**: Click on a station marker on the map or choose a station from the dropdown.
+
+**Predict Future Availability**: Toggle allows users to select a date/time to estimate future availability.
+
+**Show Only Available**: Toggle filters out stations that have no bikes available.
+
+**Viewed Station History**: The bottom bar tracks recently viewed stations.
+
+### Zoomed View
+
+![Zoomed View](screenshots\Zoomed_View.png)
+
+When a user selects a station, the map zooms in to provide more details.
+
+Current Availability: Popup shows number of available bikes and number of available stands.
+
+Predicted Availiblilty: Popup if toggled shows estimated number of bikes and stands for the chosen time.
 
 ## Data Analytics
 
@@ -66,13 +98,13 @@ Example: If a user selects Tuesday at 9:00 AM, the app calculates the average bi
 
 While this was a group project, my contributions included:
 
-Frontend Development: Designed and implemented the CSS styles and structured the HTML layout.
+**Frontend Development**: Designed and implemented the CSS styles and structured the HTML layout.
 
-JavaScript Development: Contributed to bikeapp.js, specifically handling UI interactions.
+**JavaScript Development**: Contributed to bikeapp.js, specifically handling UI interactions.
 
-Backend Development: Worked on bikeapp.py, including integrating Flask with the SQL database.
+**Backend Development**: Worked on bikeapp.py, including integrating Flask with the SQL database.
 
-Database Integration: Connected the Flask application to MySQL using SQLAlchemy.
+**Database Integration**: Connected the Flask application to MySQL using SQLAlchemy.
 
 ## Notes
 
