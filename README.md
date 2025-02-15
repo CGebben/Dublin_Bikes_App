@@ -56,7 +56,7 @@ This project is a web application designed to complement the Dublin Bikes rental
 
 ### Full Application View
 
-![Full App View](\screenshots\Full_View.png)
+![Full App View](screenshots/Full_View.png)
 
 **Weather Bar**: Displays live weather information above the map.
 
@@ -76,7 +76,7 @@ This project is a web application designed to complement the Dublin Bikes rental
 
 ### Zoomed View
 
-![Zoomed View](\screenshots\Zoomed_View.png)
+![Zoomed View](screenshots/Zoomed_View.png)
 
 When a user selects a station, the map zooms in to provide more details.
 
