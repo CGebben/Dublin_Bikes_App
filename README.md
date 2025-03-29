@@ -1,107 +1,67 @@
-# Dublin Bikes Web Application
+# Dublin Bikes Web Application - Rebuild
 
 ## Overview
 
-This project is a web application designed to complement the Dublin Bikes rental service. It provides users with real-time bike availability, weather conditions, and predictive occupancy forecasts based on historical data. The interactive map allows users to locate stations, check bike availability, and filter stations based on their needs. The project was developed as part of a team software engineering assignment.
+This project is a full-stack redevelopment of a previously completed academic assignment designed to complement the Dublin Bikes rental service. The goal is to rebuild the application from the ground up using modern tools and professional practices to better showcase full-stack development capabilities.
 
-## Features
+This version will use React for the frontend and Spring Boot for the backend. It will also include Docker-based local development and a machine learning model for predictive bike availability. The project will follow Agile practices including version control, changelogs, and development logs.
 
-**Weather Information**: Retrieves and displays real-time weather data using OpenWeather API.
+## Features (Planned)
 
-**Real-time Data**: Fetches and displays live bike availability from JCDecaux's API.
+- Real-time bike availability from JCDecaux API
+- Real-time weather data from OpenWeatherMap API
+- RESTful backend using Spring Boot
+- Frontend interface built with React
+- PostgreSQL database containerized with Docker
+- Predictive model using historical data and machine learning
+- Google Maps integration to display bike stations
+- Version tracking and project management via GitHub
 
-**Google Maps Integration**: Stations are displayed with color-coded markers indicating availability.
+## Tech Stack
 
-🟢 Green (Large): High availability.
-🟠 Amber (Medium): Low availability.
-🔴 Red (Small): No available bikes.
+- Frontend: React (planned)
+- Backend: Java, Spring Boot
+- Database: PostgreSQL
+- DevOps: Docker, GitHub, GitHub Projects
+- Hosting (planned): AWS EC2, RDS
+- Machine Learning (planned): Python or Java
 
-**Station Selection**: Users can select a station from a dropdown or by clicking a marker on the map.
+## Current Progress
 
-**Availability Filtering**: Users can filter to view only stations with available bikes.
+This project is in early development. Active work is being done in the `Dev` branch. Project tasks are tracked using GitHub Projects and documented in the `CHANGELOG.md`.
 
-**Predictive Model**: Users can select a future date and time to view predicted bike availability.
+## Original Project Summary
 
-**Station History Tracking**: Recently viewed stations are stored locally and can be revisited from a dropdown.
+The original academic version of this project used:
 
-**Responsive Design**: Works for both desktop and mobile use.
+- Flask (Python) as the backend
+- MySQL database hosted on AWS RDS
+- A JavaScript frontend with Google Maps integration
+- Python scripts for scraping weather and bike data
+- Averages-based prediction model using historical data
 
-## Screenshots
+The original version is no longer live, and the database has been deleted. The original project can be found in the 'Original Project' folder. This version will rebuild the entire application from scratch using a different tech stack.
 
-### Full View
+## Architecture (Planned)
 
-![Full App View](screenshots/Full_View.png)
+- Scrapers (Java)
+- Spring Boot REST API
+- PostgreSQL database (Dockerized)
+- React frontend
+- Machine learning model for prediction
 
-### Zoomed View
+## How to Run (To be added)
 
-![Zoomed View](screenshots/Zoomed_View.png)
+Setup instructions will be added after the backend and database layers are functional.
 
-## Technologies Used
+## Author
 
-### Frontend
+Colton
 
-**HTML, CSS, JavaScript** – for structuring, styling, and interactive UI elements.
-
-**Google Maps API** – for visualizing station locations and bike availability.
-
-### Backend
-
-**Flask** – Python web framework for handling API requests.
-
-**SQLAlchemy** – ORM for database interactions.
-
-**MySQL** – database used for storing bike and weather data.
-
-**AWS RDS** – cloud database for storing real-time data.
-
-**Python Scrapers** – scripts for periodically fetching and storing data from APIs.
-
-## Project Architecture
-
-**Data Collection**: Python scripts scrape data from JCDecaux and OpenWeather APIs every 5 minutes.
-
-**Database Storage**: Data is stored in a MySQL database hosted on AWS RDS.
-
-**Backend Processing**: Flask and SQLAlchemy handle API requests and serve data to the frontend.
-
-**Frontend Display**: JavaScript dynamically updates the UI with real-time and predicted availability data.
-
-## Data Analytics
-
-The app includes a predictive feature to estimate bike availability at a given station based on historical data.
-
-The prediction model returns the mean availability for a selected station based on the weekday and time.
-
-The model calculates the average bike availability for all recorded data points within a 10-minute window for the same weekday in past weeks.
-
-Example: If a user selects Tuesday at 9:00 AM, the app calculates the average bike availability for that station across all Tuesdays from 8:50 AM to 9:10 AM.
-
-## Contributions
-
-While this was a group project, my contributions included:
-
-**Frontend Development**: Designed and implemented the CSS styles and structured the HTML layout.
-
-**JavaScript Development**: Contributed to bikeapp.js, specifically handling UI interactions.
-
-**Backend Development**: Worked on bikeapp.py, including integrating Flask with the SQL database.
-
-**Database Integration**: Connected the Flask application to MySQL using SQLAlchemy.
-
-## Notes
-
-The original database instance is no longer available, as it was scrubbed after the project was graded.
-
-The predictive model was initially planned to use machine learning but was later replaced with a mean-based prediction model due to time constraints.
-
-API keys have been removed for security reasons. Users must provide their own JCDecaux, OpenWeather, and Google Maps API keys in a config.py file.
-
-## Future Enhancements
-
-Rebuild the project with React (frontend) and Java (backend) to utilize new skills.
-
-Improve prediction accuracy with a proper machine learning model.
+- Rebuilding this project to demonstrate full-stack web app development
+- Focusing on Java, React, Docker, and AWS as part of ongoing professional development
+- Interested in deploying working examples viewable via GitHub portfolio
 
 ## License
 
-This project was developed as part of an academic assignment and is not intended for commercial use.
+This project is a personal redevelopment of a previously completed academic project. It is not intended for commercial use.
