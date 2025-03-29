@@ -1,1 +1,0 @@
-These are bike availability prediction models as per the jupyter notebook for each bike station.

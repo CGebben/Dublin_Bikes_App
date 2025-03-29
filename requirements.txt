@@ -1,7 +1,0 @@
-Flask>=2.2
-Flask-SQLAlchemy>=2.5
-SQLAlchemy>=2.0
-mysqlclient>=2.1
-mysql-connector-python>=8.0
-simplejson>=3.19
-requests>=2.28
