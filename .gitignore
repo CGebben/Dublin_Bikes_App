@@ -1,0 +1,29 @@
+# === Java / Maven ===
+/target/
+*.class
+*.jar
+*.war
+*.ear
+
+# === IntelliJ / VSCode / Eclipse ===
+*.iml
+.idea/
+.vscode/
+.project
+.classpath
+.settings/
+
+# === Logs ===
+*.log
+logs/
+spring.log
+
+# === OS Files ===
+.DS_Store
+Thumbs.db
+
+# === Environment Variables ===
+.env
+
+# === Docker ===
+**/pgdata/
