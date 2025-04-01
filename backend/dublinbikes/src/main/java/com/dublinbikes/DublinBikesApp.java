@@ -1,13 +1,13 @@
-package com.dublinbikes.dublinbikes;
+package com.dublinbikes;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DublinbikesApplication {
+public class DublinBikesApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DublinbikesApplication.class, args);
+		SpringApplication.run(DublinBikesApp.class, args);
 	}
 
 }
