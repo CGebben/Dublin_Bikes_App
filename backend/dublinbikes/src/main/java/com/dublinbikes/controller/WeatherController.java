@@ -18,4 +18,10 @@ public class WeatherController {
     public List<Weather> getAllWeather() {
         return weatherRepository.findAll();
     }
+
+    // For endpoint testing.
+    @PostMapping
+    public Weather addWeather(@RequestBody Weather weather) {
+        return weatherRepository.save(weather);
+    }
 }

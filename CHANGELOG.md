@@ -9,20 +9,27 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - Created `StationRepository` interface extending `JpaRepository`.
-- Created `StationController` with `GET /stations` endpoint.
-- Verified database connection and JSON response using browser.
+- Created `StationController` with `GET /stations` and `POST /stations` endpoints.
+- Verified database connection and JSON response using browser and Postman.
 - Confirmed JPA-Hibernate table creation with clean terminal logs.
+- Created `Availability` entity and `AvailabilityId` composite key class.
+- Created `AvailabilityRepository` and `AvailabilityController` with `GET /availability` and `POST /availability` endpoints.
+- Created `Weather` entity and `WeatherId` composite key class.
+- Created `WeatherRepository` and `WeatherController` with `GET /weather` and `POST /weather` endpoints.
 
 ### Updated
 
 - Renamed main application class to `DublinBikesApp`.
 - Moved `DublinBikesApp.java` to correct package (`com.dublinbikes`) to simplify structure.
 - Cleaned up project folders to follow standard Spring Boot conventions.
+- Changed `spring.jpa.hibernate.ddl-auto` from `create` to `update` to persist data across restarts.
 
 ### Notes
 
-- Endpoint `GET /stations` currently returns an empty array; next step is to support inserts or scraping.
+- Endpoint `GET /stations` now reflects added data and is ready for scraping integration.
 - PostgreSQL container must be running for Spring Boot to connect successfully.
+- All three entity types (Station, Availability, Weather) have been tested for full insert-retrieve flow.
+- Added dummy station for local dev testing to enable Availability insertions. Test station removed from database after successful testing.
 
 ---
 

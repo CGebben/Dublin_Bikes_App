@@ -18,4 +18,10 @@ public class StationController {
     public List<Station> getAllStations() {
         return stationRepository.findAll();
     }
+
+    // For endpoint testing.
+    @PostMapping
+    public Station addStation(@RequestBody Station station) {
+        return stationRepository.save(station);
+    }
 }
