@@ -2,7 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
----
+## [0.1.3] - 2025-04-03
+
+### Added
+
+- Created `DublinBikesScraper` service to fetch station and availability data from the JCDecaux API.
+- Implemented scheduled task using `@Scheduled` to run the `DublinBikesScraper` every 5 minutes.
+- Triggered the scraper for the first time, resulting in real-time station and availability data being successfully inserted into the PostgreSQL database.
+- Verified scraper functionality through logs and SQL queries.
+- Began work on `DublinWeatherScraper` to fetch live weather data from the `OpenWeatherMap API`.
+
+### Updated
+
+- Updated `.gitignore` to exclude `application.properties` and added environment variable setup for API keys to prevent accidental commits.
+
+### Notes
+
+- The `DublinBikesScraper` is fully operational and stores both static and dynamic data reliably.
+- The `DublinWeatherScraper` is not yet functional. Further debugging or refactoring is needed.
+- PostgreSQL database must be running for scrapers to function properly. The scheduled tasks will silently fail if the database or Spring Boot app is not active.
 
 ## [0.1.2] - 2025-04-01
 
