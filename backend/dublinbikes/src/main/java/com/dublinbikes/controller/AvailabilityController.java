@@ -25,4 +25,9 @@ public class AvailabilityController {
     public Availability addAvailability(@RequestBody Availability availability) {
         return availabilityRepository.save(availability);
     }
+
+    @GetMapping("/latest")
+    public List<Availability> getLatestAvailabilityPerStation() {
+        return availabilityRepository.findLatestPerStation();
+    }
 }

@@ -24,4 +24,9 @@ public class WeatherController {
     public Weather addWeather(@RequestBody Weather weather) {
         return weatherRepository.save(weather);
     }
+
+    @GetMapping("/latest")
+    public Weather getLatestWeather() {
+        return weatherRepository.findLatestWeather();
+    }
 }

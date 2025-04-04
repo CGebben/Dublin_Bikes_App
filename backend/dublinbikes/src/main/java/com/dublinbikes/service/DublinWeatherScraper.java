@@ -70,19 +70,21 @@ public class DublinWeatherScraper {
             short windDeg = Short.parseShort(windData.get("deg").toString());
 
             // Extract cloud data
-            short clouds = Short.parseShort(weatherData.get("clouds").get("all").toString());
+            @SuppressWarnings("unchecked")
+            Map<String, Object> cloudData = (Map<String, Object>) weatherData.get("clouds");
+            short clouds = Short.parseShort(cloudData.get("all").toString());
 
             // Extract timestamp (dt), sys information (sunrise, sunset), and timezone
             long dt = Long.parseLong(weatherData.get("dt").toString());
             @SuppressWarnings("unchecked")
             Map<String, Object> sysData = (Map<String, Object>) weatherData.get("sys");
             short sysType = Short.parseShort(sysData.get("type").toString());
-            short sysId = Short.parseShort(sysData.get("id").toString());
+            int sysId = Integer.parseInt(sysData.get("id").toString());
             String sysCountry = (String) sysData.get("country");
             int sysSunrise = Integer.parseInt(sysData.get("sunrise").toString());
             int sysSunset = Integer.parseInt(sysData.get("sunset").toString());
             int timezone = Integer.parseInt(weatherData.get("timezone").toString());
-            String cod = (String) weatherData.get("cod");
+            String cod = weatherData.get("cod").toString();
 
             // Create WeatherId (composite key)
             WeatherId weatherIdObj = new WeatherId("Dublin", LocalDateTime.now());

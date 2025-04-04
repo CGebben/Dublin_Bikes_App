@@ -39,7 +39,7 @@ public class Weather {
     private long dt;
 
     private short sysType;
-    private short sysId;
+    private int sysId;
     private String sysCountry;
     private int sysSunrise;
     private int sysSunset;
@@ -192,11 +192,11 @@ public class Weather {
         this.sysType = sysType;
     }
 
-    public short getSysId() {
+    public int getSysId() {
         return sysId;
     }
 
-    public void setSysId(short sysId) {
+    public void setSysId(int sysId) {
         this.sysId = sysId;
     }
 

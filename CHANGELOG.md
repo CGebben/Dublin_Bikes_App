@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file.
 
+---
+
+## [0.1.4] - 2025-04-04
+
+### Added
+
+- Completed and debugged `DublinWeatherScraper` to fetch and save live weather data using the OpenWeatherMap API.
+- Implemented `@Scheduled` annotation to run the weather scraper every 5 minutes.
+- Added custom JPA query and new endpoint `GET /weather/latest` to retrieve the most recent weather data.
+- Added custom JPA query and endpoint `GET /availability/latest` to retrieve the latest availability snapshot per station.
+- Confirmed correct integration of composite keys (`WeatherId`, `AvailabilityId`) across scraping and endpoint layers.
+- Successfully tested all endpoints via browser.
+
+### Fixed
+
+- Resolved multiple casting issues in the weather scraper, including numeric type mismatches (e.g. string vs integer).
+- Ensured weather scraper handles optional and missing fields gracefully.
+
+### Notes
+
+- Backend is now fully functional and API-complete.
+- Next stage: React frontend.
+
+---
+
 ## [0.1.3] - 2025-04-03
 
 ### Added
@@ -21,6 +46,8 @@ All notable changes to this project will be documented in this file.
 - The `DublinBikesScraper` is fully operational and stores both static and dynamic data reliably.
 - The `DublinWeatherScraper` is not yet functional. Further debugging or refactoring is needed.
 - PostgreSQL database must be running for scrapers to function properly. The scheduled tasks will silently fail if the database or Spring Boot app is not active.
+
+---
 
 ## [0.1.2] - 2025-04-01
 
