@@ -28,7 +28,14 @@ This version will use React for the frontend and Spring Boot for the backend. It
 
 ## Current Progress
 
-This project is in early development. Active work is being done in the `Dev` branch. Project tasks are tracked using GitHub Projects and documented in the `CHANGELOG.md`.
+Backend is now fully complete.
+
+- All scrapers are functional (`/stations`, `/availability`, `/weather`)
+- Scheduled tasks fetch live data every 5 minutes
+- PostgreSQL is integrated and updates reliably
+- REST endpoints are available and tested.
+
+Active frontend development will now continue in the `Dev` branch.
 
 ## Original Project Summary
 
