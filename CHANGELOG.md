@@ -4,6 +4,29 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [0.1.5] - 2025-04-08
+
+### Added
+
+- Created initial React frontend using Vite with the `react` template.
+- Folder `dublin-bikes-frontend` added at the root of the project.
+- Installed all default dependencies and verified local dev server on `http://localhost:5173/`.
+
+### Updated
+
+- Renamed `backend/` to `dublin-bikes-backend/` for naming consistency.
+- Renamed `database/` to `dublin-bikes-database/`.
+- Deleted unused `backend/target` folder left over after renaming.
+- Cleaned up and confirmed that Spring Boot backend still compiles and runs normally under new folder structure.
+
+### Notes
+
+- Confirmed that both `DublinBikesScraper` and `DublinWeatherScraper` continue to run successfully using `mvnw.cmd spring-boot:run`.
+- Daily workflow now includes: starting Docker Desktop, running the backend, and running the frontend.
+- Next step: build static layout for the React frontend to match the original app shell.
+
+---
+
 ## [0.1.4] - 2025-04-04
 
 ### Added
