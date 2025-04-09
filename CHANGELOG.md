@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [0.1.6] - 2025-04-09
+
+### Added
+
+- Implemented Google Map integration using React Leaflet (`react-leaflet`) and `leaflet` libraries.
+- Created `MapWrapper` component to render Dublin city map with bike station markers.
+- Connected `MapWrapper` to backend endpoint `GET /stations` to fetch live station data.
+- Configured Vite dev server proxy to route API calls to `localhost:8080`.
+
+### Notes
+
+- Verified that all station markers appear correctly and display station name and ID in popups.
+- First major integration between Spring Boot backend and React frontend is now functional.
+- Next steps: integrate `GET /availability/latest` to display real-time bike and stand availability per station, and conditionally style map markers based on availability data.
+
+---
+
 ## [0.1.5] - 2025-04-08
 
 ### Added
