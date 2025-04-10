@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/availability")
@@ -29,5 +30,12 @@ public class AvailabilityController {
     @GetMapping("/latest")
     public List<Availability> getLatestAvailabilityPerStation() {
         return availabilityRepository.findLatestPerStation();
+    }
+
+    @GetMapping("/latest-timestamp")
+    public Map<String, String> getLatestScrapeTimestamp() {
+        return availabilityRepository.findTopByOrderById_ScraperInputDateTimeDesc()
+                .map(a -> Map.of("timestamp", a.getId().getScraperInputDateTime().toString()))
+                .orElse(Map.of("timestamp", ""));
     }
 }

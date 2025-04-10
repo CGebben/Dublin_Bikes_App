@@ -4,6 +4,26 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [0.1.7] - 2025-04-10
+
+### Added
+
+- Created backend endpoint `GET /availability/latest-timestamp` to return the most recent availability scrape timestamp.
+- Added `fetchAvailability` and `fetchLatestTimestamp` helper functions to `api.js` for modular frontend API calls.
+- Updated `MapWrapper` component to implement polling logic:
+  1. Checks for updates every 60 seconds using the `/availability/latest-timestamp` endpoint.
+  2. Refreshes availability data only when a new timestamp is detected.
+  3. Ensures map markers remain up to date without redundant API calls.
+
+### Notes
+
+- Verified polling logic through console logs and backend Hibernate queries.
+- Confirmed that re-fetching only occurs after new scraper data is saved to the database.
+- Marker data remains in sync with the backend without requiring a full page reload.
+- Next steps: create visualization for weather and integrate weather data.
+
+---
+
 ## [0.1.6] - 2025-04-09
 
 ### Added
