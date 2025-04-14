@@ -7,3 +7,19 @@ html, body, #root {
 html, body, #root, .App {
   height: 100%;
 }
+
+.weather-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 60px;
+  padding: 0 1rem;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+.weather-item {
+  margin: 0 10px;
+  white-space: nowrap;
+}

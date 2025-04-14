@@ -21,3 +21,11 @@ export async function fetchLatestTimestamp() {
   }
   return await response.json(); // Expected to return: { timestamp: "2025-04-10T..." }
 }
+
+export async function fetchWeather() {
+  const response = await fetch('/weather/latest');
+  if (!response.ok) {
+    throw new Error('Failed to fetch weather');
+  }
+  return await response.json();
+}

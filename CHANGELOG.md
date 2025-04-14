@@ -4,6 +4,30 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [0.1.8] - 2025-04-14
+
+### Added
+
+- Created `fetchWeather` helper function in `api.js` to retrieve latest weather data from `GET /weather/latest`.
+- Created `WeatherBar` component to display weather details as a horizontal bar above the map.
+- Added basic styling for `.weather-bar` and `.weather-item` in `index.css` for layout consistency.
+- Moved polling logic for availability and weather data into `App.jsx` for centralized control and cleaner component responsibilities:
+  1. App now fetches and updates availability and weather whenever a new timestamp is detected.
+  2. `MapWrapper` now receives `availability` via props.
+  3. `WeatherBar` now receives `weather` via props.
+
+### Updated
+
+- Removed internal polling logic from `MapWrapper.jsx`.
+
+### Notes
+
+- Verified that availability and weather data update together in sync with scraper activity.
+- Console logs and observed value changes confirm accurate, real-time updates.
+- Layout is now visually structured with the weather bar anchored above the map.
+
+---
+
 ## [0.1.7] - 2025-04-10
 
 ### Added
