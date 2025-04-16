@@ -4,6 +4,28 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [0.1.9] - 2025-04-17
+
+### Added
+
+- Implemented `If-Modified-Since` support for optimized data fetching:
+  - Backend now checks the `If-Modified-Since` HTTP header in both `GET /availability/latest` and `GET /weather/latest`.
+  - Controllers return `304 Not Modified` when data hasn't changed since the last known update.
+  - `App.jsx` tracks `lastModified` timestamps and includes them in future polling requests.
+- Added `fetchAvailability` and `fetchWeather` helper functions in `api.js` that support conditional headers.
+- Added console logs to `App.jsx` to visualize polling and update behavior during development.
+
+### Removed
+
+- Deprecated `GET /availability/latest-timestamp` and its corresponding frontend logic (no longer needed due to `If-Modified-Since` optimization).
+
+### Notes
+
+- Confirmed that both weather and availability data update dynamically only when changes occur.
+- Merging changes from `dev` into `main` to mark completion of full backend-frontend integration for dynamic data updates.
+
+---
+
 ## [0.1.8] - 2025-04-14
 
 ### Added

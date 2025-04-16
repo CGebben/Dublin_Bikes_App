@@ -4,38 +4,43 @@
 
 This project is a full-stack redevelopment of a previously completed academic assignment designed to complement the Dublin Bikes rental service. The goal is to rebuild the application from the ground up using modern tools and professional practices to better showcase full-stack development capabilities.
 
-This version will use React for the frontend and Spring Boot for the backend. It will also include Docker-based local development and a machine learning model for predictive bike availability. The project will follow Agile practices including version control, changelogs, and development logs.
+This version uses React for the frontend and Spring Boot for the backend. It includes Docker-based local development and will eventually feature a machine learning model for predictive bike availability. The project follows Agile practices including version control, changelogs, and development logs.
 
-## Features (Planned)
+## Features (In Progress)
 
-- Real-time bike availability from JCDecaux API
-- Real-time weather data from OpenWeatherMap API
-- RESTful backend using Spring Boot
-- Frontend interface built with React
-- PostgreSQL database containerized with Docker
-- Predictive model using historical data and machine learning
-- Google Maps integration to display bike stations
-- Version tracking and project management via GitHub
+- Real-time bike availability from JCDecaux API.
+- Real-time weather data from OpenWeatherMap API.
+- RESTful backend using Spring Boot.
+- PostgreSQL database containerized with Docker.
+- React frontend connected to backend.
+- Google Maps interface displaying dynamic station data.
+- Weather bar UI synced with backend updates.
+- Efficient update logic using `If-Modified-Since` HTTP headers.
+- Predictive model using historical data and machine learning (planned).
+- Sidebar tabs for expanded station and prediction data (planned).
+- Deployment via AWS EC2 and RDS (planned).
 
 ## Tech Stack
 
-- Frontend: React (planned)
+- Frontend: React
 - Backend: Java, Spring Boot
 - Database: PostgreSQL
-- DevOps: Docker, GitHub, GitHub Projects
+- DevOps: Docker, GitHub Projects (planned)
 - Hosting (planned): AWS EC2, RDS
 - Machine Learning (planned): Python or Java
 
 ## Current Progress
 
-Backend is now fully complete.
+Backend and frontend are now fully connected.
 
-- All scrapers are functional (`/stations`, `/availability`, `/weather`)
-- Scheduled tasks fetch live data every 5 minutes
-- PostgreSQL is integrated and updates reliably
-- REST endpoints are available and tested.
+- All scrapers are functional (`/stations`, `/availability`, `/weather`).
+- Scheduled tasks fetch live data every 5 minutes.
+- PostgreSQL database is integrated and persists correctly.
+- REST endpoints are stable and tested.
+- Frontend polls backend every 60 seconds using `If-Modified-Since` headers.
+- Bike station markers and weather data update dynamically without redundant API calls.
 
-Active frontend development will now continue in the `Dev` branch.
+Frontend development is now focused on UI refinement, marker visualization, and planning for predictive data integration.
 
 ## Original Project Summary
 
@@ -56,6 +61,7 @@ The original version is no longer live, and the database has been deleted. The o
 - PostgreSQL database (Dockerized)
 - React frontend
 - Machine learning model for prediction
+- Hosting with AWS (EC2, RDS)
 
 ## How to Run (To be added)
 

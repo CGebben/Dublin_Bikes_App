@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react";
 import MapWrapper from "./components/MapWrapper";
 import WeatherBar from "./components/WeatherBar";
-import {
-  fetchStations,
-  fetchAvailability,
-  fetchLatestTimestamp,
-  fetchWeather,
-} from "./services/api";
+import { fetchStations, fetchAvailability, fetchWeather } from "./services/api";
 
 function App() {
   const [stations, setStations] = useState([]);
   const [availability, setAvailability] = useState([]);
   const [weather, setWeather] = useState(null);
-  const [lastTimestamp, setLastTimestamp] = useState("");
 
-  // Load static station data once.
+  // Track last successful update time for conditional requests
+  const [lastModifiedAvailability, setLastModifiedAvailability] =
+    useState(null);
+  const [lastModifiedWeather, setLastModifiedWeather] = useState(null);
+
+  // Load static station data once
   useEffect(() => {
     async function loadStations() {
       try {
@@ -28,39 +27,46 @@ function App() {
     loadStations();
   }, []);
 
-  // Poll for updates every 60 seconds
+  // Poll every 60 seconds using If-Modified-Since headers.
   useEffect(() => {
-    async function checkForUpdates() {
+    async function pollData() {
+      console.log("⏳ Polling for updates...");
+
       try {
-        const { timestamp } = await fetchLatestTimestamp();
-        console.log("Checked timestamp:", timestamp);
+        const [availabilityResult, weatherResult] = await Promise.all([
+          fetchAvailability(lastModifiedAvailability),
+          fetchWeather(lastModifiedWeather),
+        ]);
 
-        if (timestamp !== lastTimestamp) {
-          console.log("New timestamp detected! Refreshing data...");
-          setLastTimestamp(timestamp);
-
-          const [availabilityData, weatherData] = await Promise.all([
-            fetchAvailability(),
-            fetchWeather(),
-          ]);
-
-          setAvailability(availabilityData);
-          setWeather(weatherData);
+        if (availabilityResult.data) {
+          console.log(
+            "✅ Availability updated:",
+            availabilityResult.data.length,
+            "stations"
+          );
+          setAvailability(availabilityResult.data);
+          setLastModifiedAvailability(availabilityResult.lastModified);
         } else {
-          console.log("Timestamp unchanged. No need to refresh.");
+          console.log("ℹ️ Availability not modified.");
+        }
+
+        if (weatherResult.data) {
+          console.log("✅ Weather updated:", weatherResult.data.weatherMain);
+          setWeather(weatherResult.data);
+          setLastModifiedWeather(weatherResult.lastModified);
+        } else {
+          console.log("ℹ️ Weather not modified.");
         }
       } catch (error) {
-        console.error("Polling error:", error);
+        console.error("❌ Polling error:", error);
       }
     }
 
-    // Initial load
-    checkForUpdates();
+    pollData(); // Initial call
 
-    // Poll every 60 seconds
-    const interval = setInterval(checkForUpdates, 60000);
+    const interval = setInterval(pollData, 60000);
     return () => clearInterval(interval);
-  }, [lastTimestamp]);
+  }, [lastModifiedAvailability, lastModifiedWeather]);
 
   return (
     <div className="App">

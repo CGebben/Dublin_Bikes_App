@@ -1,31 +1,29 @@
 export async function fetchStations() {
   const response = await fetch('/stations');
-  if (!response.ok) {
-    throw new Error("Failed to fetch stations");
-  }
+  if (!response.ok) throw new Error("Failed to fetch stations");
   return await response.json();
 }
 
-export async function fetchAvailability() {
-  const response = await fetch('/availability/latest');
-  if (!response.ok) {
-    throw new Error("Failed to fetch availability");
-  }
-  return await response.json();
+export async function fetchAvailability(lastModified) {
+  const headers = lastModified ? { 'If-Modified-Since': lastModified } : {};
+  const response = await fetch('/availability/latest', { headers });
+
+  if (response.status === 304) return { data: null, lastModified };
+  if (!response.ok) throw new Error("Failed to fetch availability");
+
+  const data = await response.json();
+  const lastModifiedHeader = response.headers.get('Last-Modified');
+  return { data, lastModified: lastModifiedHeader };
 }
 
-export async function fetchLatestTimestamp() {
-  const response = await fetch('/availability/latest-timestamp');
-  if (!response.ok) {
-    throw new Error("Failed to fetch latest timestamp");
-  }
-  return await response.json(); // Expected to return: { timestamp: "2025-04-10T..." }
-}
+export async function fetchWeather(lastModified) {
+  const headers = lastModified ? { 'If-Modified-Since': lastModified } : {};
+  const response = await fetch('/weather/latest', { headers });
 
-export async function fetchWeather() {
-  const response = await fetch('/weather/latest');
-  if (!response.ok) {
-    throw new Error('Failed to fetch weather');
-  }
-  return await response.json();
+  if (response.status === 304) return { data: null, lastModified };
+  if (!response.ok) throw new Error("Failed to fetch weather");
+
+  const data = await response.json();
+  const lastModifiedHeader = response.headers.get('Last-Modified');
+  return { data, lastModified: lastModifiedHeader };
 }
