@@ -2,6 +2,8 @@ package com.dublinbikes.model;
 
 import jakarta.persistence.*;
 
+// JPA entity for a single availability snapshot.
+// Each record is uniquely identified by station ID and scrape timestamp.
 @Entity
 @Table(name = "availability")
 public class Availability {
@@ -9,8 +11,10 @@ public class Availability {
     @EmbeddedId
     private AvailabilityId id;
 
+    // Relationship to Station entity (foreign key: Station_ID)
+    // Also acts as part of the composite key
     @ManyToOne
-    @MapsId("stationId") // ties this field to the composite key part
+    @MapsId("stationId")
     @JoinColumn(name = "Station_ID")
     private Station station;
 

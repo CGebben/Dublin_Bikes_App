@@ -1,9 +1,10 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
+// Displays a Leaflet map with one marker per station from availability data
 function MapWrapper({ stations, availability }) {
   return (
     <MapContainer
-      center={[53.34491, -6.26266]}
+      center={[53.34491, -6.26266]} // Centered on Dublin
       zoom={13}
       style={{ height: "100%", width: "100%" }}
     >
@@ -12,6 +13,7 @@ function MapWrapper({ stations, availability }) {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
+      {/* Render markers for all available stations */}
       {availability.map((entry) => (
         <Marker
           key={entry.station.stationId}

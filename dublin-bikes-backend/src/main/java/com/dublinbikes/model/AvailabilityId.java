@@ -6,6 +6,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+// Composite primary key for Availability.
+// Combines station ID and scraper timestamp.
 @Embeddable
 public class AvailabilityId implements Serializable {
 
@@ -37,7 +39,7 @@ public class AvailabilityId implements Serializable {
         this.scraperInputDateTime = scraperInputDateTime;
     }
 
-    // Required for JPA composite keys
+    // Required for proper comparison and hashing in composite keys
     @Override
     public boolean equals(Object o) {
         if (this == o)

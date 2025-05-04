@@ -4,16 +4,21 @@ import WeatherBar from "./components/WeatherBar";
 import { fetchStations, fetchAvailability, fetchWeather } from "./services/api";
 
 function App() {
+  // Static station data (loaded once on mount)
   const [stations, setStations] = useState([]);
+
+  // Dynamic availability data (updates every 60s if backend changes)
   const [availability, setAvailability] = useState([]);
+
+  // Latest weather snapshot
   const [weather, setWeather] = useState(null);
 
-  // Track last successful update time for conditional requests
+  // Track timestamps for conditional fetching
   const [lastModifiedAvailability, setLastModifiedAvailability] =
     useState(null);
   const [lastModifiedWeather, setLastModifiedWeather] = useState(null);
 
-  // Load static station data once
+  // Load station data once on initial load
   useEffect(() => {
     async function loadStations() {
       try {
@@ -27,7 +32,7 @@ function App() {
     loadStations();
   }, []);
 
-  // Poll every 60 seconds using If-Modified-Since headers.
+  // Poll weather and availability every 60s using If-Modified-Since
   useEffect(() => {
     async function pollData() {
       console.log("⏳ Polling for updates...");
@@ -38,6 +43,7 @@ function App() {
           fetchWeather(lastModifiedWeather),
         ]);
 
+        // Update availability if backend data changed
         if (availabilityResult.data) {
           console.log(
             "✅ Availability updated:",
@@ -50,6 +56,7 @@ function App() {
           console.log("ℹ️ Availability not modified.");
         }
 
+        // Update weather if backend data changed
         if (weatherResult.data) {
           console.log("✅ Weather updated:", weatherResult.data.weatherMain);
           setWeather(weatherResult.data);
@@ -62,10 +69,11 @@ function App() {
       }
     }
 
-    pollData(); // Initial call
+    pollData(); // Initial fetch on mount
 
+    // Poll every 60 seconds
     const interval = setInterval(pollData, 60000);
-    return () => clearInterval(interval);
+    return () => clearInterval(interval); // Cleanup on unmount
   }, [lastModifiedAvailability, lastModifiedWeather]);
 
   return (

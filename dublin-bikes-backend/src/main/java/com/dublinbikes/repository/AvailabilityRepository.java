@@ -9,9 +9,13 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
+// Repository interface for Availability data.
+// Uses composite key (AvailabilityId) for lookups and persistence.
 @Repository
 public interface AvailabilityRepository extends JpaRepository<Availability, AvailabilityId> {
 
+    // Returns the latest availability record per station (one per station).
+    // Uses subquery to select the max timestamp for each station.
     @Query("""
                 SELECT a FROM Availability a
                 WHERE (a.id.stationId, a.id.scraperInputDateTime) IN (
@@ -22,5 +26,7 @@ public interface AvailabilityRepository extends JpaRepository<Availability, Avai
             """)
     List<Availability> findLatestPerStation();
 
+    // Returns the single most recent availability record in the table.
+    // Used for conditional GET comparison.
     Optional<Availability> findTopByOrderById_ScraperInputDateTimeDesc();
 }

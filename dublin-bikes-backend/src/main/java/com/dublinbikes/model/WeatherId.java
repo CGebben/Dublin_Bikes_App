@@ -6,6 +6,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+// Composite key for Weather entity.
+// Combines station name and scrape timestamp.
 @Embeddable
 public class WeatherId implements Serializable {
 

@@ -2,6 +2,8 @@ package com.dublinbikes.model;
 
 import jakarta.persistence.*;
 
+// JPA entity for Dublin bike stations.
+// Each station is uniquely identified by its stationId.
 @Entity
 @Table(name = "station")
 public class Station {
@@ -37,7 +39,7 @@ public class Station {
     @Column(name = "Last_update")
     private long lastUpdate;
 
-    // Getters and Setters
+    // Getters and setters for all fields
     public int getStationId() {
         return stationId;
     }

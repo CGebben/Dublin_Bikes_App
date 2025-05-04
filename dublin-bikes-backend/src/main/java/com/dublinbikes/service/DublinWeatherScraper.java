@@ -13,6 +13,8 @@ import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.List;
 
+// Scraper that pulls current weather data for Dublin from the OpenWeatherMap API.
+// Runs every 5 minutes using a scheduled Spring task.
 @Service
 public class DublinWeatherScraper {
 
@@ -26,11 +28,12 @@ public class DublinWeatherScraper {
         this.weatherRepo = weatherRepo;
     }
 
+    // Main logic to fetch data, parse JSON, and save to database
     public void fetchAndStoreData() {
         String url = "https://api.openweathermap.org/data/2.5/weather?q=Dublin,ie&appid=" + apiKey;
 
         try {
-            // Fetch weather data from OpenWeatherMap API
+            // Request weather data
             ResponseEntity<Map> response = restTemplate.getForEntity(url, Map.class);
             Map<String, Object> weatherData = response.getBody();
 
@@ -39,21 +42,21 @@ public class DublinWeatherScraper {
                 return;
             }
 
-            // Extract latitude and longitude
+            // Parse location
             @SuppressWarnings("unchecked")
             Map<String, Object> coordData = (Map<String, Object>) weatherData.get("coord");
             double lon = (double) coordData.get("lon");
             double lat = (double) coordData.get("lat");
 
-            // Extract weather details (e.g., main weather type, description)
+            // Parse main weather fields
             @SuppressWarnings("unchecked")
             List<Map<String, Object>> weatherList = (List<Map<String, Object>>) weatherData.get("weather");
-            Map<String, Object> weatherInfo = weatherList.get(0); // Assuming weather array has one element
+            Map<String, Object> weatherInfo = weatherList.get(0);
             short weatherId = Short.parseShort(weatherInfo.get("id").toString());
             String weatherMain = (String) weatherInfo.get("main");
             String weatherDesc = (String) weatherInfo.get("description");
 
-            // Extract main data (temperature, pressure, humidity)
+            // Parse temperature, pressure, humidity
             @SuppressWarnings("unchecked")
             Map<String, Object> mainData = (Map<String, Object>) weatherData.get("main");
             float temp = Float.parseFloat(mainData.get("temp").toString());
@@ -63,18 +66,18 @@ public class DublinWeatherScraper {
             short pressure = Short.parseShort(mainData.get("pressure").toString());
             short humidity = Short.parseShort(mainData.get("humidity").toString());
 
-            // Extract wind data
+            // Parse wind data
             @SuppressWarnings("unchecked")
             Map<String, Object> windData = (Map<String, Object>) weatherData.get("wind");
             float windSpeed = Float.parseFloat(windData.get("speed").toString());
             short windDeg = Short.parseShort(windData.get("deg").toString());
 
-            // Extract cloud data
+            // Parse cloud coverage
             @SuppressWarnings("unchecked")
             Map<String, Object> cloudData = (Map<String, Object>) weatherData.get("clouds");
             short clouds = Short.parseShort(cloudData.get("all").toString());
 
-            // Extract timestamp (dt), sys information (sunrise, sunset), and timezone
+            // Parse timestamps and location info
             long dt = Long.parseLong(weatherData.get("dt").toString());
             @SuppressWarnings("unchecked")
             Map<String, Object> sysData = (Map<String, Object>) weatherData.get("sys");
@@ -86,11 +89,10 @@ public class DublinWeatherScraper {
             int timezone = Integer.parseInt(weatherData.get("timezone").toString());
             String cod = weatherData.get("cod").toString();
 
-            // Create WeatherId (composite key)
+            // Create weather entity and populate fields
             WeatherId weatherIdObj = new WeatherId("Dublin", LocalDateTime.now());
-
-            // Create Weather entity and map data
             Weather weather = new Weather();
+
             weather.setId(weatherIdObj);
             weather.setLon(lon);
             weather.setLat(lat);
@@ -115,7 +117,7 @@ public class DublinWeatherScraper {
             weather.setTimezone(timezone);
             weather.setCod(cod);
 
-            // Save the Weather entity to the database
+            // Save to database
             weatherRepo.save(weather);
 
             System.out.println("✅ Successfully fetched and saved weather data.");
@@ -125,7 +127,8 @@ public class DublinWeatherScraper {
         }
     }
 
-    @Scheduled(fixedRate = 300000) // every 5 minutes
+    // Runs the weather scraper every 5 minutes (300,000 ms)
+    @Scheduled(fixedRate = 300000)
     public void runScheduledWeatherScraper() {
         System.out.println("🔁 Running scheduled weather scraper...");
         fetchAndStoreData();

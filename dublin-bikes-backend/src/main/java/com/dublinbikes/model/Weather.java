@@ -2,6 +2,8 @@ package com.dublinbikes.model;
 
 import jakarta.persistence.*;
 
+// JPA entity representing a single weather snapshot.
+// Uses a composite key (station name + timestamp).
 @Entity
 @Table(name = "weather")
 public class Weather {
