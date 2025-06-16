@@ -103,9 +103,9 @@ public class DublinBikesScraper {
     }
 
     // Runs the scraper every 5 minutes (300,000 ms)
-    @Scheduled(initialDelay = 60000, fixedRate = 300000)
-    public void runScheduledScraper() {
-        System.out.println("🔁 Running scheduled scraper...");
-        fetchAndStoreData();
-    }
+    // @Scheduled(fixedRate = 300000)
+    // public void runScheduledScraper() {
+    // System.out.println("🔁 Running scheduled scraper...");
+    // fetchAndStoreData();
+    // }
 }
