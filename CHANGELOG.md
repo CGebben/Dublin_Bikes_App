@@ -4,6 +4,37 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [0.1.10] - 2025-06-15
+
+### Added
+
+- Updated Leaflet map markers to dynamically reflect station availability:
+  - Green markers for high availability (4+ bikes).
+  - Orange markers for low availability (1–3 bikes).
+  - Red markers for zero availability.
+  - Markers now use custom `divIcon`s with visual size scaling (30, 26, 22 px).
+- Prepared backend for deployment:
+  - Switched `application.properties` to use environment variables for DB and API keys.
+  - Skipped broken test class to enable successful JAR packaging.
+  - Built `.jar` using `mvnw.cmd clean package -DskipTests`.
+- Created and configured PostgreSQL database on Render:
+  - Database named `dublinbikes`.
+  - User set to `dbuser`.
+  - External access temporarily allowed for setup (`0.0.0.0/0`).
+- Backend will be deployed without migration and will start from scratch.
+
+### Updated
+
+- Retained `dublin-bikes-database/` folder for local development context.
+  - It is no longer needed for deployment.
+
+### Notes
+
+- Deployment will use the `main` branch.
+- Ongoing development will continue in the `dev` branch.
+
+---
+
 ## [0.1.9] - 2025-04-17
 
 ### Added
