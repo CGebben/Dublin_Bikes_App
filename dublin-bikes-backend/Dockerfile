@@ -6,7 +6,7 @@ WORKDIR /app
 COPY . .
 
 # Build the JAR inside the container
-RUN ./mvnw clean package -DskipTests
+RUN chmod +x mvnw && ./mvnw clean package -DskipTests
 
 # Expose default Spring Boot port
 EXPOSE 8080
