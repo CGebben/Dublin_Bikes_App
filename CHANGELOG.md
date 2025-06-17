@@ -4,6 +4,32 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [0.1.11] - 2025-06-16
+
+### Added
+
+- Successfully deployed backend to Render with working Docker setup.
+- Configured Spring Boot to use Render’s PostgreSQL database through environment variables.
+- Imported existing local database to Render using `pg_dump` and `psql` via Docker.
+  - Ensured schema and data for `station`, `availability`, and `weather` tables were transferred.
+
+### Fixed
+
+- Resolved startup errors caused by scrapers querying tables before schema creation:
+  - Initially attempted to delay scheduled tasks with `initialDelay` and commented-out annotations.
+  - Final fix was to import schema and data directly to Render DB, bypassing timing issues.
+
+### Verified
+
+- Scheduled scrapers for JCDecaux and OpenWeatherMap are now running every 5 minutes as intended.
+- Backend service is confirmed live and responsive.
+
+### Notes
+
+- Next step will be to deploy Frontend on GitHub pages.
+
+---
+
 ## [0.1.10] - 2025-06-15
 
 ### Added
@@ -21,7 +47,6 @@ All notable changes to this project will be documented in this file.
   - Database named `dublinbikes`.
   - User set to `dbuser`.
   - External access temporarily allowed for setup (`0.0.0.0/0`).
-- Backend will be deployed without migration and will start from scratch.
 
 ### Updated
 
