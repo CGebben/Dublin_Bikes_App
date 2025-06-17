@@ -128,9 +128,9 @@ public class DublinWeatherScraper {
     }
 
     // Runs the weather scraper every 5 minutes (300,000 ms)
-    // @Scheduled(fixedRate = 300000)
-    // public void runScheduledWeatherScraper() {
-    // System.out.println("🔁 Running scheduled weather scraper...");
-    // fetchAndStoreData();
-    // }
+    @Scheduled(fixedRate = 300000)
+    public void runScheduledWeatherScraper() {
+        System.out.println("🔁 Running scheduled weather scraper...");
+        fetchAndStoreData();
+    }
 }
