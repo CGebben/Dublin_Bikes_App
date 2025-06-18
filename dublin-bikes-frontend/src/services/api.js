@@ -1,6 +1,9 @@
+// URL for Render backend deployment
+const BASE_URL = "https://dublin-bikes-app.onrender.com";
+
 // API call to fetch static station data
 export async function fetchStations() {
-  const response = await fetch('/stations');
+  const response = await fetch(`${BASE_URL}/stations`);
   if (!response.ok) throw new Error("Failed to fetch stations");
   return await response.json();
 }
@@ -8,7 +11,7 @@ export async function fetchStations() {
 // Fetches latest availability data, using If-Modified-Since if provided
 export async function fetchAvailability(lastModified) {
   const headers = lastModified ? { 'If-Modified-Since': lastModified } : {};
-  const response = await fetch('/availability/latest', { headers });
+  const response = await fetch(`${BASE_URL}/availability/latest`, { headers });
 
   if (response.status === 304) return { data: null, lastModified };
   if (!response.ok) throw new Error("Failed to fetch availability");
@@ -21,7 +24,7 @@ export async function fetchAvailability(lastModified) {
 // Fetches latest weather data, also using If-Modified-Since
 export async function fetchWeather(lastModified) {
   const headers = lastModified ? { 'If-Modified-Since': lastModified } : {};
-  const response = await fetch('/weather/latest', { headers });
+  const response = await fetch(`${BASE_URL}/weather/latest`, { headers });
 
   if (response.status === 304) return { data: null, lastModified };
   if (!response.ok) throw new Error("Failed to fetch weather");
