@@ -4,7 +4,40 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## [0.1.11] - 2025-06-16
+## [1.0.0] - 2025-06-18
+
+## [1.0.0] - 2025-06-18
+
+### Added
+
+- Deployed React frontend to GitHub Pages:
+
+  - Live site: https://cgebben.github.io/Dublin_Bikes_App/
+  - Configured `vite.config.js` with `base: '/Dublin_Bikes_App/'`.
+  - Added deployment scripts to `package.json`:
+    - `predeploy` builds the frontend with Vite.
+    - `deploy` publishes the `dist/` folder using `gh-pages`.
+
+- Updated `api.js` to use full backend base URL (`https://dublin-bikes-app.onrender.com`) for all fetch requests.
+
+- Added backend CORS configuration to allow cross-origin requests from GitHub Pages:
+  - Created `CorsConfig.java` with allowed origins for both local dev and deployed frontend.
+  - Redeployed backend with updated config to enable successful API access from GitHub Pages.
+
+### Verified
+
+- Frontend renders correctly via GitHub Pages.
+- Map displays live station availability and weather data.
+- Scheduled scrapers continue running and syncing every 5 minutes.
+
+### Notes
+
+- This is the first fully deployed version of the Dublin Bikes web app.
+- Project has reached a stable MVP milestone. Future changes will iterate from here.
+
+---
+
+## [0.3.2] - 2025-06-16
 
 ### Added
 
@@ -30,7 +63,7 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## [0.1.10] - 2025-06-15
+## [0.3.1] - 2025-06-15
 
 ### Added
 
@@ -60,7 +93,7 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## [0.1.9] - 2025-04-17
+## [0.3.0] - 2025-04-17
 
 ### Added
 
@@ -82,7 +115,7 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## [0.1.8] - 2025-04-14
+## [0.2.4] - 2025-04-14
 
 ### Added
 
@@ -106,7 +139,7 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## [0.1.7] - 2025-04-10
+## [0.2.3] - 2025-04-10
 
 ### Added
 
@@ -126,7 +159,7 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## [0.1.6] - 2025-04-09
+## [0.2.2] - 2025-04-09
 
 ### Added
 
@@ -143,7 +176,7 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## [0.1.5] - 2025-04-08
+## [0.2.1] - 2025-04-08
 
 ### Added
 
@@ -166,7 +199,7 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## [0.1.4] - 2025-04-04
+## [0.2.0] - 2025-04-04
 
 ### Added
 
